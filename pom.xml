@@ -10,7 +10,7 @@
 	
 	<groupId>nz.ac.auckland.common</groupId>
 	<artifactId>common-angular</artifactId>
-	<version>1.37-SNAPSHOT</version>
+	<version>1.37</version>
 	<packaging>jar</packaging>
 	
 	<name>Angular Common</name>
@@ -22,7 +22,8 @@
 		<url>https://github.com/uoa-group-applications/common-angular</url>
 		<connection>scm:git:https://github.com/uoa-group-applications/common-angular.git</connection>
 		<developerConnection>scm:git:git@github.com:uoa-group-applications/common-angular.git</developerConnection>
-	</scm>
+	  <tag>common-angular-1.37</tag>
+  </scm>
 
 	<build>
 		<plugins>
