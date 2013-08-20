@@ -18,6 +18,12 @@
 		Common angular services and directives that are to function as a base for new applications
 	</description>
 	
+	<scm>
+		<url>https://github.com/uoa-group-applications/common-angular</url>
+		<connection>scm:git:https://github.com/uoa-group-applications/common-angular.git</connection>
+		<developerConnection>scm:git:git@github.com:uoa-group-applications/common-angular.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
