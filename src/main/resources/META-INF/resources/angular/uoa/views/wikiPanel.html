@@ -1,0 +1,66 @@
+<!--
+    This view component displays a wiki-style editing and preview panel that allows for safely editing rich content
+    without risking issues with HTML interfering with the rest of the page.
+    <p>Author: <a href="http://gplus.to/tzrlk">Peter Cummuskey</a></p>
+-->
+<div class="uoa-wiki-panel">
+
+    <div class="uoa-wiki-panel-container" ng-class="{previewOnly: previewOnly}">
+
+        <textarea class="uoa-wiki-panel-content uoa-wiki-panel-editing"
+                  ng-model="markdownContent"
+                  ng-show="displayStatus == 'editing'"
+                  ui-validate="{contents: validatorFunc}"
+                ></textarea>
+
+        <p class="err" ng-hide="previewOnly">{{errorMessage}}</p>
+
+        <div class="uoa-wiki-panel-content uoa-wiki-panel-rendering" ng-show="displayStatus == 'rendering'"></div>
+
+        <div class="uoa-wiki-panel-content uoa-wiki-panel-flailing" ng-show="displayStatus == 'flailing'">
+
+            <h4>{{_t('uoa.wiki-panel.error')}}</h4>
+
+            <p ng-bind="errorMessage"></p>
+
+        </div>
+
+        <div class="uoa-wiki-panel-content uoa-wiki-panel-previewing" ng-show="displayStatus == 'previewing'">
+
+            <div class="{{previewClass}}" loading="{{1}}" ng-bind-html-unsafe="renderedContent"></div>
+
+         </div>
+
+    </div>
+
+    <div class="uoa-wiki-panel-controls" ng-hide="previewOnly">
+
+        <a class="uoa-wiki-panel-help"
+           href="{{_t('uoa.wiki-panel.help.url')}}"
+           target="_blank">Help</a>
+
+
+        <ul class="uoa-wiki-panel-tabs">
+
+            <li class="uoa-wiki-panel-tab"
+                ng-class="{disabled:!enabled.doEdit}">
+
+                <a ng-disabled="!enabled.doEdit"
+                   ng-click="doEdit()"
+                        >{{_t('uoa.wiki-panel.edit')}}</a>
+            </li>
+
+            <li class="uoa-wiki-panel-tab"
+                ng-class="{disabled:!enabled.doPreview}"
+                    >
+                <a ng-disabled="!enabled.doPreview"
+                   ng-click="doPreview()"
+                        >{{_t('uoa.wiki-panel.preview')}}</a>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+</div>

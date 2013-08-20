@@ -1,0 +1,114 @@
+@import "mixinUtils"; // grab the common mixin utils.
+
+/**
+ * Styling for the uoaWikiPanel directive. Note: element types are specified to ensure inferred style expectations are
+ * met to avoid verbose and redundant style properties being declared unnecessarily.
+ * <p>Author: <a href="http://gplus.to/tzrlk">Peter Cummuskey</a></p>
+ */
+.uoa-wiki-panel {
+    overflow: hidden; // to stop content from escaping the box
+    min-width: 3em; // to stop the control bar from collapsing down.
+    min-height: 5em; // so the scroll-bars display correctly.
+	position: relative; // to capture the absolute positioned error message
+
+    div.uoa-wiki-panel-container {
+        width: 100%; // should fill the container width, but be resizable vertically
+
+        .uoa-wiki-panel-content {
+            @include boundaries(0, 0); // remove all default spacing
+            @include box-sizing(border-box); // make sure the border doesn't add to the element size
+            width: 100%; // should fill the container width, but be resizable vertically
+            border: 1px solid #a9a9a9; // make sure they have the same simple border
+        }
+
+        .uoa-wiki-panel-rendering {
+
+            height: 150px;
+
+            background: url("../../images/icn-progress.png") no-repeat 50% 50% white;
+        }
+
+        .uoa-wiki-panel-previewing {
+            overflow-y: scroll;
+            height: 150px;
+            background-color: white;
+
+            > div {
+                padding: 10px;
+            }
+
+
+        }
+
+        textarea.uoa-wiki-panel-content {
+            @extend .uoa-wiki-panel-content; // can't use 'textarea&' in '.uoa-wiki-panel-content'.
+            resize: vertical; // disable horizontal re-sizing on the textarea
+        }
+
+        .err {
+            position: absolute;
+            right: 10px;
+            top: -3px;
+        }
+    }
+
+    div.uoa-wiki-panel-controls {
+        width: 100%; // fill the container width and no more.
+
+        margin-bottom: 8px; // make the box breathe.
+
+        ul.uoa-wiki-panel-tabs {
+            @include boundaries(0, 0); // remove all default spacing
+            list-style-type: none; // this is a container, not actually a list
+            display: inline; // don't take up a whole row
+
+
+            li.uoa-wiki-panel-tab {
+                display: inline-block; // don't take up a whole row
+                margin-top: 4px;
+                margin-right: 4px;
+
+                a {
+
+                    padding: 4px 20px;
+                    text-decoration: none;
+
+                    background-color: #eee;
+
+                    border: 1px solid #A9A9A9;
+
+                    -webkit-border-bottom-right-radius: 5px;
+                    -webkit-border-bottom-left-radius: 5px;
+                    -moz-border-radius-bottomright: 5px;
+                    -moz-border-radius-bottomleft: 5px;
+                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 5px;
+
+                    border-top: none;
+                    color: #333;
+
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+
+                &.disabled a {
+                    color: black; // not a link
+                    cursor: default; // not clickable
+                    font-weight: normal;
+
+                    background-color: #0085B7;
+                    border-color: #0085b7;
+                    color: white;
+
+                }
+            }
+        }
+
+        .uoa-wiki-panel-help {
+            float: right;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+    }
+}

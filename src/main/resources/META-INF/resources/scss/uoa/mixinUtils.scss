@@ -1,0 +1,15 @@
+/**
+ * Mixins useful for inclusion in any scss file to save on duplicate declarations.
+ * <p>Author: <a href="http://gplus.to/tzrlk">Peter Cummuskey</a></p>
+ */
+
+@mixin boundaries($margin, $padding) {
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin box-sizing($sizing) {
+    -webkit-box-sizing: $sizing; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: $sizing;    /* Firefox, other Gecko */
+    box-sizing: $sizing;         /* Opera/IE 8+ */
+}

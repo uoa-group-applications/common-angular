@@ -1,0 +1,17 @@
+<ul class="tabsNav clearfix">
+	<li class="tabnavs"
+	    ng-repeat="tab in tabs"
+	    ng-switch="tab.active"
+	    ng-class="{true: 'lastItem', false: ''}[tab.last]">
+
+		<a ng-switch-when="true" href="#{{tab.url}}" class="current">
+			<span>{{tab.label}}</span>
+			<b class="arrow"><!----></b>
+		</a>
+
+		<a ng-switch-when="false" href="#{{tab.url}}">
+			<span>{{tab.label}}</span>
+		</a>
+
+	</li>
+</ul>

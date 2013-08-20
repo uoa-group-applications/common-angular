@@ -1,0 +1,18 @@
+<ul class="pagination" ng-hide="filteredPages.length <= 1">
+    <li ng-show="hasPreviousPage">
+        <a ng-click="gotoPage(previousPage); onPageChange()">&laquo; Previous</a>
+    </li>
+    <li ng-hide="hasPreviousPage">
+        <span class="inactive">&laquo; Previous</span>
+    </li>
+    <li ng-repeat="page in filteredPages">
+        <a ng-click="gotoPage(page.number); onPageChange()" class="page-number" ng-hide="page.active">{{page.number}}</a>
+        <span ng-show="page.active" class="page-number" class="active">{{page.number}}</span>
+    </li>
+    <li ng-hide="hasNextPage">
+        <span class="inactive">Next &raquo;</span>
+    </li>
+    <li ng-show="hasNextPage">
+        <a ng-click="gotoPage(nextPage); onPageChange()">Next &raquo;</a>
+    </li>
+</ul>

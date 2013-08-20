@@ -1,0 +1,71 @@
+<div class="moderation-block">
+
+    <div class="reason">
+
+        <h3>Moderate this {{moderationType}}</h3>
+
+        <form name="moderationForm">
+            <div class="actions">
+
+                <label for="approve_action">
+                    <input type="radio" id="approve_action" ng-required ng-model="formModel.action" value="approve" />
+                    {{ _t('uoa.moderation.mode_approve') }}
+                </label>
+
+                <label for="approve_with_mods_action" ng-show="canModify">
+                    <input type="radio" id="approve_with_mods_action" ng-required ng-model="formModel.action" value="modifications" />
+                    {{ _t('uoa.moderation.mode_modifications') }}
+                </label>
+
+                <label for="decline_action">
+                    <input type="radio" id="decline_action" ng-required ng-model="formModel.action" value="decline" />
+                    {{ _t('uoa.moderation.mode_decline') }}
+                </label>
+
+            </div>
+
+            <div class="row-role" ng-show="formModel.action == 'decline'">
+
+                <label>{{ _t('uoa.moderation.reason') }}</label>
+
+                <textarea name="declineReason" ng-model="formModel.reason.decline"
+                          va-text-counter
+                          ng-required="formModel.action == 'decline'" ng-minlength="20" ng-maxlength="500"
+                          placeholder="A minimum of 20 characters must be entered before the email is sent."></textarea>
+            </div>
+
+            <div class="row-role" ng-show="formModel.action == 'modifications'">
+                <label>{{ _t('uoa.moderation.modifications') }}</label>
+
+                <textarea name="modReason" ng-model="formModel.reason.modification"
+                          va-text-counter
+                          ng-required="action == 'modifications'" ng-minlength="20" ng-maxlength="500"
+                          placeholder="{{ _t('uoa.moderation.minimum') }}"></textarea>
+            </div>
+
+            <div class="buttonContainer clearfix">
+
+                <a ng-click="moderationForm.$valid && submit()" ng-class="{disabled: formModel.incomplete}" class="button blue right">
+                    <span class="btn-left"><!----></span>
+                    <span class="btn-right"><!----></span>
+                    <span class="btn-content">
+                        <span class="right-arrow">{{ _t('uoa.moderation.submit') }}</span>
+                    </span>
+                </a>
+
+                <a ng-click="reset()" class="button gray">
+                    <span class="btn-left"><!----></span>
+                    <span class="btn-right"><!----></span>
+                    <span class="btn-content">
+                        {{ _t('uoa.moderation.cancel') }}
+                    </span>
+                </a>
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
