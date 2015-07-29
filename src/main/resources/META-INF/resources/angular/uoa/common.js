@@ -31,6 +31,8 @@ UOA.template = function(templateName) {
  */
 UOA.common = angular.module("uoa-common", []);
 
+UOA.analytics = angular.module("uoa-analytics", ['uoa-common']);
+
 UOA.services = angular.module("uoa-services", []);
 UOA.mockServices = angular.module("uoa-mockServices", []);
 UOA.restServices = angular.module("uoa-restServices", []);
